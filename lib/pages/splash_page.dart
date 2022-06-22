@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:uas_mobile/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:uas_mobile/core/color.dart';
@@ -53,7 +52,7 @@ class SplashPage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (builder) => HomePage()));
+                      builder: (builder) => const HomePage()));
             },
             child: Container(
               padding: const EdgeInsets.symmetric(

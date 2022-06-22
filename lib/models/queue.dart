@@ -9,7 +9,7 @@ class Antrean {
 
   // Konstruktor versi 2: konversi dari Map ke Item
   queueMap() {
-    var mapping = Map<String, dynamic>();
+    var mapping = <String, dynamic>{};
     mapping['id'] = id;
     mapping['name'] = name;
     mapping['nik'] = nik;

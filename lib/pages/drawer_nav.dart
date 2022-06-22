@@ -5,14 +5,15 @@ import 'package:uas_mobile/services/category_service.dart';
 import 'package:flutter/material.dart';
 
 class DrawerNavigation extends StatefulWidget {
+  const DrawerNavigation({Key key}) : super(key: key);
+
   @override
   _DrawerNavigationState createState() => _DrawerNavigationState();
 }
 
 class _DrawerNavigationState extends State<DrawerNavigation> {
-  List<Widget> _categoryList = List<Widget>();
-
-  CategorySevice _categorySevice = CategorySevice();
+  final List<Widget> _categoryList = <Widget>[];
+  final CategorySevice _categorySevice = CategorySevice();
 
   @override
   initState() {
@@ -22,14 +23,13 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
 
   getAllCategory() async {
     var category = await _categorySevice.readCategory();
-
     category.forEach((category) {
       setState(() {
         _categoryList.add(InkWell(
           onTap: () => Navigator.push(
-            context, 
-            new MaterialPageRoute(
-              builder: (context) => new QueueByCategory(category: category['name']))),
+            context,
+            MaterialPageRoute(
+              builder: (context) => QueueByCategory(category: category['name']))),
           child: ListTile(
             title: Text(category['name']),
           ),
@@ -40,44 +40,42 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
 
   @override
   Widget build (BuildContext context) {
-    return Container(
-      child: Drawer(
-        child: ListView(
-          children: <Widget>[
-            UserAccountsDrawerHeader(
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage('assets/images/pin.jpg'),
-              ),
-              accountName: Text('Admin'),
-              accountEmail: Text('admin@gmail.com'),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[
-                  Colors.deepPurple,
-                  Colors.purple,
-                  Colors.purpleAccent
-                  ]
-                ) 
-              ),
+    return Drawer(
+      child: ListView(
+        children: <Widget>[
+          const UserAccountsDrawerHeader(
+            currentAccountPicture: CircleAvatar(
+              backgroundImage: AssetImage('assets/images/pin.jpg'),
             ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
-              onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage())),
+            accountName: Text('Admin'),
+            accountEmail: Text('admin@gmail.com'),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: <Color>[
+                Colors.deepPurple,
+                Colors.purple,
+                Colors.purpleAccent
+                ]
+              )
             ),
-            ListTile(
-              leading: Icon(Icons.view_list),
-              title: Text('Queue Categories'),
-              onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context) => CategoryPage())),
-            ),
-            Divider(),
-            Column(
-              children: _categoryList
-            ),
-          ],
-        ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.home),
+            title: const Text('Home'),
+            onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomePage())),
+          ),
+          ListTile(
+            leading: const Icon(Icons.view_list),
+            title: const Text('Queue Categories'),
+            onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CategoryPage())),
+          ),
+          const Divider(),
+          Column(
+            children: _categoryList
+          ),
+        ],
       ),
     );
   }
