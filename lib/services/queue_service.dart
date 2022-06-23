@@ -15,11 +15,21 @@ class QueueService {
 
   //tampilkan tabel flower
   readQueue() async {
-    return await _repository.readData('antrean');
+    return await _repository.readDataByColumn('antrean', 'konfirmasi', 0);
+  }
+
+  // tampilkan tabel antrean khusus yang sudah dikonfirmasi
+  readQueueConfirmation() async {
+    return await _repository.readDataByColumn('antrean', 'konfirmasi', 1);
   }
 
   //tampilkan tabel flower dengan category
   readQueueByCategory(category) async {
     return await _repository.readDataByColumn('antrean', 'category', category);
+  }
+
+  // Konfirmasi Queue
+  updateConfirmationQueue(Antrean antrean) async {
+    return await _repository.updateData('antrean', antrean.queueMap());
   }
 }

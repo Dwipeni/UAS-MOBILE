@@ -6,6 +6,7 @@ class Antrean {
   String tanggal;
   String alamat;
   String category;
+  int konfirmasi;
 
   // Konstruktor versi 2: konversi dari Map ke Item
   queueMap() {
@@ -17,6 +18,7 @@ class Antrean {
     mapping['tanggal'] = tanggal;
     mapping['alamat'] = alamat;
     mapping['category'] = category;
+    mapping['konfirmasi'] = konfirmasi;
 
     return mapping;
   }

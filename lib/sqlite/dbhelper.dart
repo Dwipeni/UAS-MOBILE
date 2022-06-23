@@ -18,7 +18,7 @@ class DatabaseHelper {
 
     //membuat tabel flower
     await database.execute(
-      "CREATE TABLE antrean(id INTEGER PRIMARY KEY, name TEXT, nik TEXT, noHp TEXT, tanggal TEXT, alamat TEXT, category TEXT)"
+      "CREATE TABLE antrean(id INTEGER PRIMARY KEY, name TEXT, nik TEXT, noHp TEXT, tanggal TEXT, alamat TEXT, category TEXT, konfirmasi INT DEFAULT 0)"
     );
   }
 }

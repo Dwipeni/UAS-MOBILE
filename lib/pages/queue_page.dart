@@ -70,6 +70,7 @@ class _QueuePageState extends State<QueuePage> {
       queueObject.tanggal = _queueTanggalController.text;
       queueObject.alamat = _queueAlamatController.text;
       queueObject.category = _selectedValue;
+      queueObject.konfirmasi = 0;
       var _flowerService = QueueService();
       var result = await _flowerService.saveQueue(queueObject);
       if (result > 0) {

@@ -1,3 +1,4 @@
+import 'package:uas_mobile/pages/history_page.dart';
 import 'package:uas_mobile/pages/queue_by_category.dart';
 import 'package:uas_mobile/pages/home_page.dart';
 import 'package:uas_mobile/pages/category_page.dart';
@@ -70,6 +71,11 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
             leading: const Icon(Icons.view_list),
             title: const Text('Queue Categories'),
             onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CategoryPage())),
+          ),
+          ListTile(
+            leading: const Icon(Icons.history_sharp),
+            title: const Text('Queue History'),
+            onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HistoryPage())),
           ),
           const Divider(),
           Column(

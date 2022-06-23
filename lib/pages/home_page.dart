@@ -27,8 +27,9 @@ class _HomePageState extends State<HomePage> {
     _queueService = QueueService();
     _queueList = <Antrean>[];
     var antrean = await _queueService.readQueue();
-    antrean.forEach((antrean) {
-      setState(() {
+    setState(() {
+      _queueList.clear();
+      antrean.forEach((antrean) {
         var model = Antrean();
         model.id = antrean['id'];
         model.name = antrean['name'];
@@ -37,6 +38,7 @@ class _HomePageState extends State<HomePage> {
         model.tanggal = antrean['tanggal'];
         model.alamat = antrean['alamat'];
         model.category = antrean['category'];
+        model.konfirmasi = antrean['konfirmasi'];
         _queueList.add(model);
       });
     });
